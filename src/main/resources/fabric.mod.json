@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "mmbstate",
+  "version": "${version}",
+  "name": "Copy State",
+  "description": "Allows you to copy the block state of a block to your hotbar using alt + middle click. This is similar to ctrl + middle click, but copies the block state instead of the block's NBT.",
+  "authors": ["Neferupitou"],
+  "contact": {
+    "homepage": "https://cutekitten.space",
+    "sources": "https://github.com/SomeKitten/CopyState"
+  },
+  "license": "MIT",
+  "icon": "assets/mmbstate/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "space.cutekitten.mmbstate.client.MmbstateClient"
+    ],
+    "main": [
+      "space.cutekitten.mmbstate.Mmbstate"
+    ]
+  },
+  "mixins": [
+    "mmbstate.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.13.1",
+    "fabric": "*",
+    "minecraft": "1.17.1"
+  }
+}
