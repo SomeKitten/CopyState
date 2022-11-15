@@ -4,7 +4,7 @@
   "version": "${version}",
   "name": "Copy State",
   "description": "Allows you to copy the block state of a block to your hotbar using alt + middle click. This is similar to ctrl + middle click, but copies the block state instead of the block's NBT.",
-  "authors": ["Neferupitou"],
+  "authors": ["SomeKitten"],
   "contact": {
     "homepage": "https://cutekitten.space",
     "sources": "https://github.com/SomeKitten/CopyState"
