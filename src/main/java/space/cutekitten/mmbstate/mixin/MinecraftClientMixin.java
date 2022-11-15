@@ -31,19 +31,23 @@ public class MinecraftClientMixin {
         NbtCompound blockStateTag = new NbtCompound();
         state.getEntries().forEach((stateProperty, value) -> blockStateTag.putString(stateProperty.getName(), value.toString()));
 
+        NbtCompound displayCompound = new NbtCompound();
+        NbtList nbtList = new NbtList();
+
         if (needsOverride) {
             NbtCompound blockOverride = new NbtCompound();
             blockOverride.putString("id", Registry.BLOCK.getId(state.getBlock()).toString());
 
             stack.setSubNbt("BlockOverride", blockOverride);
+            nbtList.add(NbtString.of("\"(+OVERRIDE)\""));
         }
-        stack.setSubNbt("BlockStateTag", blockStateTag);
+        if (!state.getEntries().isEmpty()) {
+            stack.setSubNbt("BlockStateTag", blockStateTag);
+            nbtList.add(NbtString.of("\"(+STATE)\""));
+        }
 
-        NbtCompound nbtCompound = new NbtCompound();
-        NbtList nbtList = new NbtList();
-        nbtList.add(NbtString.of("\"(+STATE)\""));
-        nbtCompound.put("Lore", nbtList);
-        stack.setSubNbt("display", nbtCompound);
+        displayCompound.put("Lore", nbtList);
+        stack.setSubNbt("display", displayCompound);
         return stack;
     }
 
